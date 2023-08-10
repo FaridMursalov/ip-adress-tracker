@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Domain to IP</title>
+  </head>
+  <body>
+    <label for="domain-input">Enter a domain:</label>
+    <input type="text" id="domain-input" placeholder="example.com" />
+    <button id="submit-btn">Submit</button>
+
+    <p>IP address: <span id="ip-address"></span></p>
+
+    <script>
+      const domainInput = document.querySelector("#domain-input");
+      const submitBtn = document.querySelector("#submit-btn");
+      const ipAddress = document.querySelector("#ip-address");
+
+      submitBtn.addEventListener("click", () => {
+        const domain = domainInput.value.trim();
+        if (domain === "") {
+          alert("Please enter a valid domain");
+          return;
+        }
+
+        fetch(`https://api.ipify.org/?format=json&domain=${domain}`)
+          .then((response) => response.json())
+          .then((data) => {
+            ipAddress.textContent = data.ip;
+          })
+          .catch((error) => {
+            alert("An error occurred while fetching data");
+            console.log(error);
+          });
+      });
+    </script>
+  </body>
+</html>
