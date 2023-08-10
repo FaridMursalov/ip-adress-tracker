@@ -1,4 +1,4 @@
 # ip-adress-tracker
 mobile-first
 
-ip-adress-tracker-js.netlify.app
+https://ip-adress-tracker-js.netlify.app/
